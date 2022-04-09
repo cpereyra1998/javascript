@@ -1,4 +1,4 @@
-/* Funcion para suma de articulos */
+/* Funcion para suma de articulos: iria en el boton buy de la pagina shopping */
 
 
 let numero1 = parseInt(prompt("Ingrese valor de su primer producto"));
@@ -14,7 +14,7 @@ function productos (a, b, c){
 let resultado = productos(numero1, numero2, numero3);
 console.log("El total de sus productos es", resultado);
 
-/* Funcion para contraseña */
+/* Funcion para contraseña: iria en el formulario de la pagina log in*/
 
 
 let usuario = prompt("Ingrese su nombre de usuario")
