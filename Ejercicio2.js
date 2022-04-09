@@ -13,3 +13,16 @@ function productos (a, b, c){
 
 let resultado = productos(numero1, numero2, numero3);
 console.log("El total de sus productos es", resultado);
+
+/* Funcion para contraseña */
+
+
+let usuario = prompt("Ingrese su nombre de usuario")
+let contrasena = prompt("Ingrese su contraseña")
+
+    while(contrasena != "contraseñadada"){
+        alert("Dato erroneo");
+        capitalArgentina = prompt("Ingrese nuevamente su contraseña");
+    }
+
+
