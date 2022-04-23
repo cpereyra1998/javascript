@@ -3,5 +3,6 @@ miFormulario.addEventListener("submit", validarFormulario);
 
 function validarFormulario(e){
     e.preventDefault();
-    alert("Ingreso correctamente");
+    console.log("Formulario Enviado");
+    alert("Tu mensaje ha sido enviado con exito")    
 }
