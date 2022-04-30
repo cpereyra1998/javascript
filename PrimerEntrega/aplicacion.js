@@ -1,55 +1,69 @@
+// Formulario 
 
-                                        /* Pagina SHOPPING */
+let miFormulario = document.getElementById("formulario");
+miFormulario.addEventListener("submit", validarFormulario);
 
-/* Funcion para suma de articulos */
-
-
-let numero1 = parseInt(prompt("Ingrese valor de su primer producto"));
-let numero2 = parseInt(prompt("Ingrese valor de su segundo producto"));
-let numero3 = parseInt(prompt("Ingrese valor de su tercer producto"));
-
-function productos (a, b, c){
-    let suma = a + b + c
-    return suma;
-    
+function validarFormulario(e){
+    e.preventDefault();
+    console.log("Formulario Enviado");
 }
 
-let resultado = productos(numero1, numero2, numero3);
-console.log("El total de sus productos es", resultado);
+//Shopping
 
-/* Objeto para descripcion de productos */
+// Variables
+// Falta armar una nueva pagina donde se indique la lista de compras
 
-function Te(nombre, precio, cantidad){
-    this.nombre = nombre;
-    this.precio = precio;
-    this.cantidad = cantidad;
+const carrito = document.getElementById("carrito");
+const te = document.getElementsByClassName("lista-te");
+const listaTe = document.querySelector("#lista-carrito tbody");
+const btnVaciarCarrito = document.getElementsByClassName("vaciar-carrito");
+
+cargarEventListener();
+
+function cargarEventListener() {
+    // Agrega al carrito
+    te.addEventListener("click", comprarTe);
+
+    // Elimina un te del carrito
+    carrito.addEventListener("click", eliminarTe);
+
+    // Vaciar el carrito
+    btnVaciarCarrito.addEventListener("click", vaciarCarrito);
+
+    // AL cargar el documento, mostrar el localStorage
+    document.addEventListener("DOMContentLoaded", cargarLocalStorage);
 }
 
-/* Array para cantidad de productos en stock*/
 
-    /* Cantidad de té matcha */
-const matcha = ["Floral Matcha", "Jasmin Green", "White Nymph"];
-console.log(green.length);
+//Funciones
 
-    /* Cantidad de té ooblong */
-const ooblong = ["Black Oolong", "Fairy Pink Ooblong", "Pixie Sunflower"];
-console.log(ooblong.length);
-
-    /* Cantida de té total en stock */
-const stock = matcha.concat(ooblong)
-console.log(stock.length)
-
-
-                                    /* Pagina LOG IN */
-
-/* Funcion para contraseña*/
-
-
-let usuario = prompt("Ingrese su nombre de usuario")
-let contrasena = prompt("Ingrese su contraseña")
-
-    while(contrasena != "contraseñaEnBase"){
-        alert("Dato erroneo");
-        contrasena = prompt("Ingrese nuevamente su contraseña");
+// Añade el te al carrito
+function comprarTe(e) {
+    e.preventDefault();
+    if (e.target.classList.contains("agregar-carrito")) {
+        const te = e.target.parentElement.parentElement;
+        leerDatosCurso(te);
     }
+}
+
+// Vaciar el carrito de compras
+function vaciarCarrito(e) {
+
+    while (listaTe.firstChild) {
+        listaTe.removeChild(listaTe.firstChild);
+    }
+
+    localStorage.removeItem("te");
+    return false;
+}
+
+// Almacena te en el carrito al localStorage
+function guardarCursoLocalStorage(te) {
+    // Tomar el valor del localStorage
+    let te = obtenerCursosLocalStorage();
+    // El te seleccionado se agrega al arreglo
+    te.push(te);
+    localStorage.setItem("cursos", JSON.stringify(te));
+
+}
 
